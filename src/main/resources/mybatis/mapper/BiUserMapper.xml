@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoshare.bi.mapper.BiUserMapper">
+  <resultMap id="BaseResultMap" type="com.zoshare.bi.model.BiUser">
+    <!--@mbg.generated-->
+    <id column="_id" jdbcType="VARBINARY" property="id" />
+    <result column="salt" jdbcType="OTHER" property="salt" />
+    <result column="email" jdbcType="OTHER" property="email" />
+    <result column="sessionToken" jdbcType="OTHER" property="sessiontoken" />
+    <result column="updatedAt" jdbcType="OTHER" property="updatedat" />
+    <result column="ACL" jdbcType="OTHER" property="acl" />
+    <result column="password" jdbcType="OTHER" property="password" />
+    <result column="objectId" jdbcType="OTHER" property="objectid" />
+    <result column="signature" jdbcType="OTHER" property="signature" />
+    <result column="city" jdbcType="OTHER" property="city" />
+    <result column="username" jdbcType="OTHER" property="username" />
+    <result column="errMsg" jdbcType="OTHER" property="errmsg" />
+    <result column="createdAt" jdbcType="OTHER" property="createdat" />
+    <result column="iv" jdbcType="OTHER" property="iv" />
+    <result column="emailVerified" jdbcType="OTHER" property="emailverified" />
+    <result column="nickName" jdbcType="OTHER" property="nickname" />
+    <result column="mobilePhoneNumber" jdbcType="OTHER" property="mobilephonenumber" />
+    <result column="rawData" jdbcType="OTHER" property="rawdata" />
+    <result column="language" jdbcType="OTHER" property="language" />
+    <result column="gender" jdbcType="OTHER" property="gender" />
+    <result column="province" jdbcType="OTHER" property="province" />
+    <result column="encryptedData" jdbcType="OTHER" property="encrypteddata" />
+    <result column="avatarUrl" jdbcType="OTHER" property="avatarurl" />
+    <result column="country" jdbcType="OTHER" property="country" />
+    <result column="authData" jdbcType="OTHER" property="authdata" />
+    <result column="userInfo" jdbcType="OTHER" property="userinfo" />
+    <result column="mobilePhoneVerified" jdbcType="OTHER" property="mobilephoneverified" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    _id, salt, email, sessionToken, updatedAt, ACL, `password`, objectId, signature, 
+    city, username, errMsg, createdAt, iv, emailVerified, nickName, mobilePhoneNumber, 
+    rawData, `language`, gender, province, encryptedData, avatarUrl, country, authData, 
+    userInfo, mobilePhoneVerified
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update bi_user
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="salt = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=VARBINARY} then #{item.salt,jdbcType=OTHER}
+        </foreach>
+      </trim>
+      <trim prefix="email = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=VARBINARY} then #{item.email,jdbcType=OTHER}
+        </foreach>
+      </trim>
+      <trim prefix="sessionToken = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=VARBINARY} then #{item.sessiontoken,jdbcType=OTHER}
+        </foreach>
+      </trim>
+      <trim prefix="updatedAt = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=VARBINARY} then #{item.updatedat,jdbcType=OTHER}
+        </foreach>
+      </trim>
+      <trim prefix="ACL = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=VARBINARY} then #{item.acl,jdbcType=OTHER}
+        </foreach>
+      </trim>
+      <trim prefix="`password` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=VARBINARY} then #{item.password,jdbcType=OTHER}
+        </foreach>
+      </trim>
+      <trim prefix="objectId = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=VARBINARY} then #{item.objectid,jdbcType=OTHER}
+        </foreach>
+      </trim>
+      <trim prefix="signature = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=VARBINARY} then #{item.signature,jdbcType=OTHER}
+        </foreach>
+      </trim>
+      <trim prefix="city = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=VARBINARY} then #{item.city,jdbcType=OTHER}
+        </foreach>
+      </trim>
+      <trim prefix="username = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=VARBINARY} then #{item.username,jdbcType=OTHER}
+        </foreach>
+      </trim>
+      <trim prefix="errMsg = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=VARBINARY} then #{item.errmsg,jdbcType=OTHER}
+        </foreach>
+      </trim>
+      <trim prefix="createdAt = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=VARBINARY} then #{item.createdat,jdbcType=OTHER}
+        </foreach>
+      </trim>
+      <trim prefix="iv = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=VARBINARY} then #{item.iv,jdbcType=OTHER}
+        </foreach>
+      </trim>
+      <trim prefix="emailVerified = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=VARBINARY} then #{item.emailverified,jdbcType=OTHER}
+        </foreach>
+      </trim>
+      <trim prefix="nickName = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=VARBINARY} then #{item.nickname,jdbcType=OTHER}
+        </foreach>
+      </trim>
+      <trim prefix="mobilePhoneNumber = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=VARBINARY} then #{item.mobilephonenumber,jdbcType=OTHER}
+        </foreach>
+      </trim>
+      <trim prefix="rawData = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=VARBINARY} then #{item.rawdata,jdbcType=OTHER}
+        </foreach>
+      </trim>
+      <trim prefix="`language` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=VARBINARY} then #{item.language,jdbcType=OTHER}
+        </foreach>
+      </trim>
+      <trim prefix="gender = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=VARBINARY} then #{item.gender,jdbcType=OTHER}
+        </foreach>
+      </trim>
+      <trim prefix="province = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=VARBINARY} then #{item.province,jdbcType=OTHER}
+        </foreach>
+      </trim>
+      <trim prefix="encryptedData = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=VARBINARY} then #{item.encrypteddata,jdbcType=OTHER}
+        </foreach>
+      </trim>
+      <trim prefix="avatarUrl = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=VARBINARY} then #{item.avatarurl,jdbcType=OTHER}
+        </foreach>
+      </trim>
+      <trim prefix="country = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=VARBINARY} then #{item.country,jdbcType=OTHER}
+        </foreach>
+      </trim>
+      <trim prefix="authData = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=VARBINARY} then #{item.authdata,jdbcType=OTHER}
+        </foreach>
+      </trim>
+      <trim prefix="userInfo = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=VARBINARY} then #{item.userinfo,jdbcType=OTHER}
+        </foreach>
+      </trim>
+      <trim prefix="mobilePhoneVerified = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=VARBINARY} then #{item.mobilephoneverified,jdbcType=OTHER}
+        </foreach>
+      </trim>
+    </trim>
+    where _id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=VARBINARY}
+    </foreach>
+  </update>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into bi_user
+    (_id, salt, email, sessionToken, updatedAt, ACL, `password`, objectId, signature, 
+      city, username, errMsg, createdAt, iv, emailVerified, nickName, mobilePhoneNumber, 
+      rawData, `language`, gender, province, encryptedData, avatarUrl, country, authData, 
+      userInfo, mobilePhoneVerified)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.id,jdbcType=VARBINARY}, #{item.salt,jdbcType=OTHER}, #{item.email,jdbcType=OTHER}, 
+        #{item.sessiontoken,jdbcType=OTHER}, #{item.updatedat,jdbcType=OTHER}, #{item.acl,jdbcType=OTHER}, 
+        #{item.password,jdbcType=OTHER}, #{item.objectid,jdbcType=OTHER}, #{item.signature,jdbcType=OTHER}, 
+        #{item.city,jdbcType=OTHER}, #{item.username,jdbcType=OTHER}, #{item.errmsg,jdbcType=OTHER}, 
+        #{item.createdat,jdbcType=OTHER}, #{item.iv,jdbcType=OTHER}, #{item.emailverified,jdbcType=OTHER}, 
+        #{item.nickname,jdbcType=OTHER}, #{item.mobilephonenumber,jdbcType=OTHER}, #{item.rawdata,jdbcType=OTHER}, 
+        #{item.language,jdbcType=OTHER}, #{item.gender,jdbcType=OTHER}, #{item.province,jdbcType=OTHER}, 
+        #{item.encrypteddata,jdbcType=OTHER}, #{item.avatarurl,jdbcType=OTHER}, #{item.country,jdbcType=OTHER}, 
+        #{item.authdata,jdbcType=OTHER}, #{item.userinfo,jdbcType=OTHER}, #{item.mobilephoneverified,jdbcType=OTHER}
+        )
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" parameterType="com.zoshare.bi.model.BiUser">
+    <!--@mbg.generated-->
+    insert into bi_user
+    (_id, salt, email, sessionToken, updatedAt, ACL, `password`, objectId, signature, 
+      city, username, errMsg, createdAt, iv, emailVerified, nickName, mobilePhoneNumber, 
+      rawData, `language`, gender, province, encryptedData, avatarUrl, country, authData, 
+      userInfo, mobilePhoneVerified)
+    values
+    (#{id,jdbcType=VARBINARY}, #{salt,jdbcType=OTHER}, #{email,jdbcType=OTHER}, #{sessiontoken,jdbcType=OTHER}, 
+      #{updatedat,jdbcType=OTHER}, #{acl,jdbcType=OTHER}, #{password,jdbcType=OTHER}, 
+      #{objectid,jdbcType=OTHER}, #{signature,jdbcType=OTHER}, #{city,jdbcType=OTHER}, 
+      #{username,jdbcType=OTHER}, #{errmsg,jdbcType=OTHER}, #{createdat,jdbcType=OTHER}, 
+      #{iv,jdbcType=OTHER}, #{emailverified,jdbcType=OTHER}, #{nickname,jdbcType=OTHER}, 
+      #{mobilephonenumber,jdbcType=OTHER}, #{rawdata,jdbcType=OTHER}, #{language,jdbcType=OTHER}, 
+      #{gender,jdbcType=OTHER}, #{province,jdbcType=OTHER}, #{encrypteddata,jdbcType=OTHER}, 
+      #{avatarurl,jdbcType=OTHER}, #{country,jdbcType=OTHER}, #{authdata,jdbcType=OTHER}, 
+      #{userinfo,jdbcType=OTHER}, #{mobilephoneverified,jdbcType=OTHER})
+    on duplicate key update 
+    _id = #{id,jdbcType=VARBINARY}, 
+    salt = #{salt,jdbcType=OTHER}, 
+    email = #{email,jdbcType=OTHER}, 
+    sessionToken = #{sessiontoken,jdbcType=OTHER}, 
+    updatedAt = #{updatedat,jdbcType=OTHER}, 
+    ACL = #{acl,jdbcType=OTHER}, 
+    `password` = #{password,jdbcType=OTHER}, 
+    objectId = #{objectid,jdbcType=OTHER}, 
+    signature = #{signature,jdbcType=OTHER}, 
+    city = #{city,jdbcType=OTHER}, 
+    username = #{username,jdbcType=OTHER}, 
+    errMsg = #{errmsg,jdbcType=OTHER}, 
+    createdAt = #{createdat,jdbcType=OTHER}, 
+    iv = #{iv,jdbcType=OTHER}, 
+    emailVerified = #{emailverified,jdbcType=OTHER}, 
+    nickName = #{nickname,jdbcType=OTHER}, 
+    mobilePhoneNumber = #{mobilephonenumber,jdbcType=OTHER}, 
+    rawData = #{rawdata,jdbcType=OTHER}, 
+    `language` = #{language,jdbcType=OTHER}, 
+    gender = #{gender,jdbcType=OTHER}, 
+    province = #{province,jdbcType=OTHER}, 
+    encryptedData = #{encrypteddata,jdbcType=OTHER}, 
+    avatarUrl = #{avatarurl,jdbcType=OTHER}, 
+    country = #{country,jdbcType=OTHER}, 
+    authData = #{authdata,jdbcType=OTHER}, 
+    userInfo = #{userinfo,jdbcType=OTHER}, 
+    mobilePhoneVerified = #{mobilephoneverified,jdbcType=OTHER}
+  </insert>
+  <insert id="insertOrUpdateSelective" parameterType="com.zoshare.bi.model.BiUser">
+    <!--@mbg.generated-->
+    insert into bi_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        _id,
+      </if>
+      <if test="salt != null">
+        salt,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="sessiontoken != null">
+        sessionToken,
+      </if>
+      <if test="updatedat != null">
+        updatedAt,
+      </if>
+      <if test="acl != null">
+        ACL,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="objectid != null">
+        objectId,
+      </if>
+      <if test="signature != null">
+        signature,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="errmsg != null">
+        errMsg,
+      </if>
+      <if test="createdat != null">
+        createdAt,
+      </if>
+      <if test="iv != null">
+        iv,
+      </if>
+      <if test="emailverified != null">
+        emailVerified,
+      </if>
+      <if test="nickname != null">
+        nickName,
+      </if>
+      <if test="mobilephonenumber != null">
+        mobilePhoneNumber,
+      </if>
+      <if test="rawdata != null">
+        rawData,
+      </if>
+      <if test="language != null">
+        `language`,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="encrypteddata != null">
+        encryptedData,
+      </if>
+      <if test="avatarurl != null">
+        avatarUrl,
+      </if>
+      <if test="country != null">
+        country,
+      </if>
+      <if test="authdata != null">
+        authData,
+      </if>
+      <if test="userinfo != null">
+        userInfo,
+      </if>
+      <if test="mobilephoneverified != null">
+        mobilePhoneVerified,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARBINARY},
+      </if>
+      <if test="salt != null">
+        #{salt,jdbcType=OTHER},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=OTHER},
+      </if>
+      <if test="sessiontoken != null">
+        #{sessiontoken,jdbcType=OTHER},
+      </if>
+      <if test="updatedat != null">
+        #{updatedat,jdbcType=OTHER},
+      </if>
+      <if test="acl != null">
+        #{acl,jdbcType=OTHER},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=OTHER},
+      </if>
+      <if test="objectid != null">
+        #{objectid,jdbcType=OTHER},
+      </if>
+      <if test="signature != null">
+        #{signature,jdbcType=OTHER},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=OTHER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=OTHER},
+      </if>
+      <if test="errmsg != null">
+        #{errmsg,jdbcType=OTHER},
+      </if>
+      <if test="createdat != null">
+        #{createdat,jdbcType=OTHER},
+      </if>
+      <if test="iv != null">
+        #{iv,jdbcType=OTHER},
+      </if>
+      <if test="emailverified != null">
+        #{emailverified,jdbcType=OTHER},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=OTHER},
+      </if>
+      <if test="mobilephonenumber != null">
+        #{mobilephonenumber,jdbcType=OTHER},
+      </if>
+      <if test="rawdata != null">
+        #{rawdata,jdbcType=OTHER},
+      </if>
+      <if test="language != null">
+        #{language,jdbcType=OTHER},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=OTHER},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=OTHER},
+      </if>
+      <if test="encrypteddata != null">
+        #{encrypteddata,jdbcType=OTHER},
+      </if>
+      <if test="avatarurl != null">
+        #{avatarurl,jdbcType=OTHER},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=OTHER},
+      </if>
+      <if test="authdata != null">
+        #{authdata,jdbcType=OTHER},
+      </if>
+      <if test="userinfo != null">
+        #{userinfo,jdbcType=OTHER},
+      </if>
+      <if test="mobilephoneverified != null">
+        #{mobilephoneverified,jdbcType=OTHER},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        _id = #{id,jdbcType=VARBINARY},
+      </if>
+      <if test="salt != null">
+        salt = #{salt,jdbcType=OTHER},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=OTHER},
+      </if>
+      <if test="sessiontoken != null">
+        sessionToken = #{sessiontoken,jdbcType=OTHER},
+      </if>
+      <if test="updatedat != null">
+        updatedAt = #{updatedat,jdbcType=OTHER},
+      </if>
+      <if test="acl != null">
+        ACL = #{acl,jdbcType=OTHER},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=OTHER},
+      </if>
+      <if test="objectid != null">
+        objectId = #{objectid,jdbcType=OTHER},
+      </if>
+      <if test="signature != null">
+        signature = #{signature,jdbcType=OTHER},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=OTHER},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=OTHER},
+      </if>
+      <if test="errmsg != null">
+        errMsg = #{errmsg,jdbcType=OTHER},
+      </if>
+      <if test="createdat != null">
+        createdAt = #{createdat,jdbcType=OTHER},
+      </if>
+      <if test="iv != null">
+        iv = #{iv,jdbcType=OTHER},
+      </if>
+      <if test="emailverified != null">
+        emailVerified = #{emailverified,jdbcType=OTHER},
+      </if>
+      <if test="nickname != null">
+        nickName = #{nickname,jdbcType=OTHER},
+      </if>
+      <if test="mobilephonenumber != null">
+        mobilePhoneNumber = #{mobilephonenumber,jdbcType=OTHER},
+      </if>
+      <if test="rawdata != null">
+        rawData = #{rawdata,jdbcType=OTHER},
+      </if>
+      <if test="language != null">
+        `language` = #{language,jdbcType=OTHER},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=OTHER},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=OTHER},
+      </if>
+      <if test="encrypteddata != null">
+        encryptedData = #{encrypteddata,jdbcType=OTHER},
+      </if>
+      <if test="avatarurl != null">
+        avatarUrl = #{avatarurl,jdbcType=OTHER},
+      </if>
+      <if test="country != null">
+        country = #{country,jdbcType=OTHER},
+      </if>
+      <if test="authdata != null">
+        authData = #{authdata,jdbcType=OTHER},
+      </if>
+      <if test="userinfo != null">
+        userInfo = #{userinfo,jdbcType=OTHER},
+      </if>
+      <if test="mobilephoneverified != null">
+        mobilePhoneVerified = #{mobilephoneverified,jdbcType=OTHER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

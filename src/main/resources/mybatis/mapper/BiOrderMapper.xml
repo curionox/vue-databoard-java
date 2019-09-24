@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoshare.bi.mapper.BiOrderMapper">
+  <resultMap id="BaseResultMap" type="com.zoshare.bi.model.BiOrder">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="objectId" jdbcType="VARCHAR" property="objectid" />
+    <result column="ACL" jdbcType="OTHER" property="acl" />
+    <result column="createdAt" jdbcType="TIMESTAMP" property="createdat" />
+    <result column="updatedAt" jdbcType="TIMESTAMP" property="updatedat" />
+    <result column="userId" jdbcType="VARCHAR" property="userid" />
+    <result column="order" jdbcType="LONGVARCHAR" property="order" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, objectId, ACL, createdAt, updatedAt, userId, `order`
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update bi_order
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="objectId = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.objectid,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="ACL = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.acl,jdbcType=OTHER}
+        </foreach>
+      </trim>
+      <trim prefix="createdAt = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.createdat,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="updatedAt = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.updatedat,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="userId = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.userid,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="`order` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.order,jdbcType=LONGVARCHAR}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into bi_order
+    (objectId, ACL, createdAt, updatedAt, userId, `order`)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.objectid,jdbcType=VARCHAR}, #{item.acl,jdbcType=OTHER}, #{item.createdat,jdbcType=TIMESTAMP}, 
+        #{item.updatedat,jdbcType=TIMESTAMP}, #{item.userid,jdbcType=VARCHAR}, #{item.order,jdbcType=LONGVARCHAR}
+        )
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.zoshare.bi.model.BiOrder" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into bi_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      objectId,
+      ACL,
+      createdAt,
+      updatedAt,
+      userId,
+      `order`,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      #{objectid,jdbcType=VARCHAR},
+      #{acl,jdbcType=OTHER},
+      #{createdat,jdbcType=TIMESTAMP},
+      #{updatedat,jdbcType=TIMESTAMP},
+      #{userid,jdbcType=VARCHAR},
+      #{order,jdbcType=LONGVARCHAR},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      objectId = #{objectid,jdbcType=VARCHAR},
+      ACL = #{acl,jdbcType=OTHER},
+      createdAt = #{createdat,jdbcType=TIMESTAMP},
+      updatedAt = #{updatedat,jdbcType=TIMESTAMP},
+      userId = #{userid,jdbcType=VARCHAR},
+      `order` = #{order,jdbcType=LONGVARCHAR},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.zoshare.bi.model.BiOrder" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into bi_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="objectid != null">
+        objectId,
+      </if>
+      <if test="acl != null">
+        ACL,
+      </if>
+      <if test="createdat != null">
+        createdAt,
+      </if>
+      <if test="updatedat != null">
+        updatedAt,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="order != null">
+        `order`,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="objectid != null">
+        #{objectid,jdbcType=VARCHAR},
+      </if>
+      <if test="acl != null">
+        #{acl,jdbcType=OTHER},
+      </if>
+      <if test="createdat != null">
+        #{createdat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedat != null">
+        #{updatedat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="order != null">
+        #{order,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="objectid != null">
+        objectId = #{objectid,jdbcType=VARCHAR},
+      </if>
+      <if test="acl != null">
+        ACL = #{acl,jdbcType=OTHER},
+      </if>
+      <if test="createdat != null">
+        createdAt = #{createdat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedat != null">
+        updatedAt = #{updatedat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="order != null">
+        `order` = #{order,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

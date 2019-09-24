@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoshare.bi.mapper.BiDashboardMapper">
+  <resultMap id="BaseResultMap" type="com.zoshare.bi.model.BiDashboard">
+    <!--@mbg.generated-->
+    <id column="_id" jdbcType="BIGINT" property="id" />
+    <result column="updatedAt" jdbcType="TIMESTAMP" property="updatedat" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="desc" jdbcType="VARCHAR" property="desc" />
+    <result column="ACL" jdbcType="OTHER" property="acl" />
+    <result column="content" jdbcType="OTHER" property="content" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="objectId" jdbcType="BIGINT" property="objectId" />
+    <result column="createdAt" jdbcType="TIMESTAMP" property="createdat" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="isPrivate" jdbcType="VARCHAR" property="isprivate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    _id, updatedAt, creator, `desc`, ACL, content, `name`, objectId, createdAt, `status`, 
+    isPrivate
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update bi_dashboard
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="updatedAt = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=BIGINT} then #{item.updatedat,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="creator = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=BIGINT} then #{item.creator,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="`desc` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=BIGINT} then #{item.desc,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="ACL = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=BIGINT} then #{item.acl,jdbcType=OTHER}
+        </foreach>
+      </trim>
+      <trim prefix="content = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=BIGINT} then #{item.content,jdbcType=OTHER}
+        </foreach>
+      </trim>
+      <trim prefix="`name` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=BIGINT} then #{item.name,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="objectId = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=BIGINT} then #{item.objectId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="createdAt = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=BIGINT} then #{item.createdat,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="`status` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=BIGINT} then #{item.status,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="isPrivate = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when _id = #{item.id,jdbcType=BIGINT} then #{item.isprivate,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+    </trim>
+    where _id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="_id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into bi_dashboard
+    (updatedAt, creator, `desc`, ACL, content, `name`, objectId, createdAt, `status`, 
+      isPrivate)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.updatedat,jdbcType=TIMESTAMP}, #{item.creator,jdbcType=VARCHAR}, #{item.desc,jdbcType=VARCHAR}, 
+        #{item.acl,jdbcType=OTHER}, #{item.content,jdbcType=OTHER}, #{item.name,jdbcType=VARCHAR}, 
+        #{item.objectId,jdbcType=BIGINT}, #{item.createdat,jdbcType=TIMESTAMP}, #{item.status,jdbcType=VARCHAR}, 
+        #{item.isprivate,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="_id" keyProperty="id" parameterType="com.zoshare.bi.model.BiDashboard" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into bi_dashboard
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        _id,
+      </if>
+      updatedAt,
+      creator,
+      `desc`,
+      ACL,
+      content,
+      `name`,
+      objectId,
+      createdAt,
+      `status`,
+      isPrivate,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      #{updatedat,jdbcType=TIMESTAMP},
+      #{creator,jdbcType=VARCHAR},
+      #{desc,jdbcType=VARCHAR},
+      #{acl,jdbcType=OTHER},
+      #{content,jdbcType=OTHER},
+      #{name,jdbcType=VARCHAR},
+      #{objectId,jdbcType=BIGINT},
+      #{createdat,jdbcType=TIMESTAMP},
+      #{status,jdbcType=VARCHAR},
+      #{isprivate,jdbcType=VARCHAR},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        _id = #{id,jdbcType=BIGINT},
+      </if>
+      updatedAt = #{updatedat,jdbcType=TIMESTAMP},
+      creator = #{creator,jdbcType=VARCHAR},
+      `desc` = #{desc,jdbcType=VARCHAR},
+      ACL = #{acl,jdbcType=OTHER},
+      content = #{content,jdbcType=OTHER},
+      `name` = #{name,jdbcType=VARCHAR},
+      objectId = #{objectId,jdbcType=BIGINT},
+      createdAt = #{createdat,jdbcType=TIMESTAMP},
+      `status` = #{status,jdbcType=VARCHAR},
+      isPrivate = #{isprivate,jdbcType=VARCHAR},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="_id" keyProperty="id" parameterType="com.zoshare.bi.model.BiDashboard" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into bi_dashboard
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        _id,
+      </if>
+      <if test="updatedat != null">
+        updatedAt,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="desc != null">
+        `desc`,
+      </if>
+      <if test="acl != null">
+        ACL,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="objectId != null">
+        objectId,
+      </if>
+      <if test="createdat != null">
+        createdAt,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="isprivate != null">
+        isPrivate,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="updatedat != null">
+        #{updatedat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="desc != null">
+        #{desc,jdbcType=VARCHAR},
+      </if>
+      <if test="acl != null">
+        #{acl,jdbcType=OTHER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=OTHER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="objectId != null">
+        #{objectId,jdbcType=BIGINT},
+      </if>
+      <if test="createdat != null">
+        #{createdat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="isprivate != null">
+        #{isprivate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        _id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="updatedat != null">
+        updatedAt = #{updatedat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="desc != null">
+        `desc` = #{desc,jdbcType=VARCHAR},
+      </if>
+      <if test="acl != null">
+        ACL = #{acl,jdbcType=OTHER},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=OTHER},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="objectId != null">
+        objectId = #{objectId,jdbcType=BIGINT},
+      </if>
+      <if test="createdat != null">
+        createdAt = #{createdat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="isprivate != null">
+        isPrivate = #{isprivate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
