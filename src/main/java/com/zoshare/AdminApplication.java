@@ -12,9 +12,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 @SpringBootApplication(exclude ={DataSourceAutoConfiguration.class})
 @MapperScan(basePackages = {"com.zoshare.bi.mapper"})
 public class AdminApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(AdminApplication.class, args);
     }
-
 }
